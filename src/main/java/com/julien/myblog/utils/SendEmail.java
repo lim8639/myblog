@@ -39,7 +39,7 @@ public class SendEmail {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 // 授权码和发送对象
-                return new PasswordAuthentication("863978160@qq.com","okxtjfosbhxcbega");
+                return new PasswordAuthentication("863978160@qq.com","");
             }
         });
         //开启debug模式
@@ -49,7 +49,7 @@ public class SendEmail {
         Transport transport = session.getTransport();
 
         //连接服务器
-        transport.connect("smtp.qq.com","863978160@qq.com","okxtjfosbhxcbega");
+        transport.connect("smtp.qq.com","863978160@qq.com","");
 
         //创建邮件对象
         MimeMessage mimeMessage = new MimeMessage(session);
