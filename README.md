@@ -8,4 +8,4 @@
 * 使用token令牌实现登录注册等权限管理
 ## 部署使用
 编译后将生成的 jar文件使用java命令运行即可
-java - jar -FileName.jar
+java - jar FileName.jar
