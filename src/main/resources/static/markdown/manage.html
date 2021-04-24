@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>沫沫的时光机</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../asset/css/frame.css">
+    <link rel="stylesheet" href="../asset/css/manage.css">
+    <link rel="stylesheet" href="../asset/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="../asset/bootstrap-3.3.7-dist/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../asset/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../asset/bootstrap-3.3.7-dist/jquery/jquery.cookie.js"></script>
+    <script src="../asset/js/login.js"></script>
+</head>
+<body>
+<section class="header_nav ">
+    <nav class="container">
+        <div class="nav_logo_text">
+            <a href="../index.html">沫沫的时光机</a>
+        </div>
+        <ul class="nav_ul hidden-sm hidden-xs">
+            <li class="visible-sm visible-xs"><a href="#">博客中心</a></li>
+            <li class=""><a href="../webapi/web.html">网站说明</a></li>
+            <li><a href="../webapi/api.html">api说明</a></li>
+            <li><a href="../personal/myweb.html">页面管理</a></li>
+            <li><a href="../markdown/manage.html">文章管理</a></li>
+        </ul>
+        <div class="nav_user_mine"><a  href="../personal/user.html">个人中心</a></div>
+    </nav>
+</section>
+<div class="container">
+    文章管理:data
+    <h1><a href="editor.html?id=0">编写新文章>></a>
+    </h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>标题</th>
+            <th>时间</th>
+            <th>id</th>
+            <th>书记安保</th>
+            <th>编辑</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody id="table_mark">
+<!--        <tr>-->
+<!--            <td>我举报四分</td>-->
+<!--            <td>我举报四分</td>-->
+<!--            <td>我举报四分</td>-->
+<!--            <td>我举报四分</td>-->
+<!--            <td><a href="editor.html?id=2">-->
+<!--                <button class="btn-xs">编辑</button>-->
+<!--            </a></td>-->
+<!--            <td>-->
+<!--                <button data="" class="delete btn-xs">删除</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+        </tbody>
+        <script>
+            $.get("/markdownlist","json",function (data) {
+                for( var key in data ){
+                    var lists = "        <tr>\n" +
+                        "            <td>"+data[key].title+"</td>\n" +
+                        "            <td>"+data[key].updateTime+"</td>\n" +
+                        "            <td>"+data[key].id+"</td>\n" +
+                        "            <td>我举报四分</td>\n" +
+                        "            <td><a href=\"editor.html?id="+data[key].id+"\">\n" +
+                        "                <button class=\"btn-xs\">编辑</button>\n" +
+                        "            </a></td>\n" +
+                        "            <td>\n" +
+                        "                <button data=\""+data[key].id+"\" class=\"delete btn-xs\">删除</button>\n" +
+                        "            </td>\n" +
+                        "        </tr>";
+                    $('#table_mark').append(lists);
+                }
+            })
+            $(document).on("click",".delete",function () {
+                var rem = $(this).parent().parent();
+                var id = $(this).attr('data');
+                $.get("/rmd/"+id,function (data) {
+                    if (data.code==1){
+                        rem.remove();
+                    }else {
+                        alert("删除失败");
+                    }
+
+                },"json");
+            })
+        </script>
+    </table>
+</div>
+<section class="page_footer">
+    <div class="footer">
+        <p><span style="top: 2px" class="glyphicon glyphicon-copyright-mark"></span>版权所有@copyright</p>
+        <p>技术支持: <a style="color: #9e69d7" href="http://bootcss.com">Bootstrap</a> | <a style="color: #7dc664" href="https://spring.io/">SpringBoot</a></p>
+        <p>2021.01.24</p>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,150 @@
+/*
+clear base decoration!
+*/
+*{
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+
+    text-decoration: none!important;
+}
+a:checked{
+    text-decoration: none!important;
+}
+a:active{
+    text-decoration:none!important;
+    list-style: none;
+}
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {    .page_footer{
+    height: 160px!important;
+}}
+@media (min-width: 1200px) {
+    .page_footer{
+        height: 180px!important;
+    }
+}
+
+/*页头*/
+nav{position: relative;
+    height: 80px;
+
+}
+
+nav>ul{
+    position: absolute;
+    left: 25%;
+    top: 0;
+    /*margin-left: -25%;*/
+    height: 100%;
+    color: #666;
+}
+.nav_logo_text{
+    left: 0;
+}
+
+.header_nav{
+    z-index: 999;
+    /*position: fixed;*/
+    /*top: 0;*/
+    width: 100%;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 1px 40px -8px rgba(0,0,0,.5);
+    margin-bottom: 30px;
+}
+nav>ul{
+    position: absolute;
+    left: 25%;
+    top: 0;
+    /*margin-left: -25%;*/
+    height: 100%;
+    color: #666;
+}
+.nav_logo_text{
+    left: 0;
+    top: 0;
+    height: 80px;
+    line-height: 80px;
+    position: absolute;
+    color: #666;
+    font-size: 26px;
+    font-weight: 700;
+    font-family: "更纱黑体 Mono SC Nerd",serif;
+}
+.nav_logo_text a{
+    color: #666;
+    font-family: "更纱黑体 Mono SC Nerd",serif;
+}
+.nav_ul > li{
+    font-size: 16px;
+    color: #666666;
+}
+
+.nav_ul a{
+    color: #666666;
+}
+.nav_user_mine{
+    color: #666;
+    height: 80px;
+    line-height: 80px;
+    position: absolute;
+    right: 0;
+
+    font-size: 26px;
+    font-weight: 700;
+    font-family: "更纱黑体 Mono SC Nerd",serif;
+}
+.nav_user_mine a {
+    color: #666;
+}
+
+a:hover{
+    text-decoration: none!important;
+}
+a:active{
+    text-decoration: none!important;
+}
+a:checked{
+    text-decoration: none!important;
+}
+a:focus{
+    text-decoration: none!important;
+}
+nav>ul>li{
+    font-size: 26px;
+    font-weight: 700;
+    font-family: "更纱黑体 Mono SC Nerd",serif;
+    line-height: 80px;
+    display: inline-block;
+}
+/*页脚*/
+.page_footer{
+    border-top: 1px rgba(172, 172, 172, 0.2) dashed;
+    height: 90px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255,255,255,0);
+    box-shadow: 0 1px 5px -6px rgba(205, 205, 205, 0.5);
+}
+
+.footer{
+    padding: 20px;
+
+}
+.footer p{
+    color: #666666;
+}
+/**
+commen css
+
+*/
+

@@ -1,0 +1,254 @@
+@font-face{
+    font-family: 'SC1';
+    src : url('../Cormorant_SC/CormorantSC-Bold.ttf');
+}
+.serif {
+    font-family: 'Merriweather Sans',Helvetica,Tahoma,Arial,'PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei',sans-serif;}
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+
+
+}
+
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+    .main_content_title{
+        margin: 0 auto;
+        width: 780px;
+
+    }
+    .main_content_title h2{
+        margin: 30px 0 -20px!important;
+    }
+    .header_banner{
+
+        height: 780px!important;
+    }
+    .main_list{
+        height: 300px!important;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    .item{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -390px;
+        background-color: rgba(255,255,255,0);
+        box-shadow: 0 1px 20px -6px rgba(0,0,0,.5);
+        width: 780px!important;
+    }
+    .item_img{
+        float: left;
+        height: 300px!important;
+        width: 450px!important;
+        border-top-right-radius: 0!important;
+        border-bottom-right-radius: 0!important;
+
+    }
+    .item_txt{
+        float: right;
+        height: 300px;
+        width: 320px;
+
+    }
+    .main_show{
+        margin: 40px auto 20px!important;
+        width: 780px!important;
+        /*margin-top: 40px;*/
+    }
+
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+    .main_content_title{
+        margin: 0 auto;
+        width: 780px;
+
+    }
+    .main_content_title h2{
+        margin: 30px 0 -20px!important;
+    }
+    .header_banner{
+
+        height: 780px!important;
+    }
+    .main_list{
+        height: 300px!important;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    .item{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -390px;
+        background-color: rgba(255,255,255,0);
+        box-shadow: 0 1px 20px -6px rgba(0,0,0,.5);
+        width: 780px!important;
+    }
+    .item_img{
+        float: left;
+        height: 300px!important;
+        width: 450px!important;
+        border-top-right-radius: 0!important;
+        border-bottom-right-radius: 0!important;
+
+    }
+    .item_txt{
+        float: right;
+        height: 300px;
+        width: 320px;
+
+    }
+    .main_show{
+
+        margin: 40px auto 40px!important;
+        width: 780px!important;
+        /*margin-top: 40px;*/
+    }
+
+}
+
+/*首页*/
+.header_banner{
+    text-align: center;
+    width: 100%;
+    height: 320px;
+}
+a:hover{
+    text-decoration: none!important;
+}
+.header_banner_img{
+    max-width: 100%;
+    align-self: center;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/*main_container*/
+
+/*show*/
+.show_img{
+    height: 200px;
+
+}
+.main_show{
+    margin: 20px auto;
+    width: 100%;
+    height: 200px;
+    /*margin-top: 40px;*/
+    overflow: hidden;
+}
+.show_img_content{
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    background: url("../img/75924201_p0.png") center center ;
+    background-size: cover;
+}
+.main_show img{
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+/*list*/
+.main_content{
+
+}
+.main_content_title h2{
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ececec;
+    margin:30px 20px 0px;
+}
+
+.title_leave{
+    transform: scale(-1,1);
+}
+.main_list{
+    padding: 20px;
+
+    width: 100%;
+}
+.item{
+    width: 100%;
+    border-radius: 10px;
+}
+
+/*优先满足手机设备*/
+.item_img{
+
+    background: url("../img/76478105_p0.png") center center no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    padding: 20px;
+    height: 210px;
+    border-radius:10px;
+    width: 100%;
+}
+.item_img img{
+    border-radius: 10px;
+    min-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.item_txt{
+    text-align: left;
+    margin: 0;
+    padding: 20px;
+
+    box-shadow: none;
+    border-top: 0;
+}
+.post-date, .post-meta, .post-meta a {
+    color: #888;
+    font-size: 12px;
+}
+.post-list-thumb .post-title h3 {
+    font-weight: 600;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.post-content>a{
+    color: #504e4e;;
+}
+.float-content p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 67.5px;
+    overflow: hidden;
+    font-size: 15px;
+    font-family: "微软雅黑", serif;
+    color: #000000A8;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}

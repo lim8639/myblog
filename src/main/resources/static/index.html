@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>沫沫的时光机</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="asset/css/frame.css">
+    <link rel="stylesheet" href="asset/css/index.css">
+    <link rel="stylesheet" href="asset/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="asset/bootstrap-3.3.7-dist/jquery/jquery-3.5.1.min.js"></script>
+    <script src="asset/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="asset/js/hf.js"></script>
+</head>
+<body>
+<section id="header_nav" class="header_nav ">
+</section>
+<section class="header_banner">
+        <img class="header_banner_img" src="asset/img/hello.png" alt="helloworld">
+</section>
+<div class="page_index">
+    <section id="lists_container" class="main_content">
+        <div class="main_content_title">
+            <h2><span class="title_leave glyphicon glyphicon-send" style="top: 2px"></span> START:DASH!!</h2>
+        </div>
+
+        <div class="main_show">
+            <div class="show_img col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="show_img_content"></div>
+            </div>
+            <div class="show_img col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="show_img_content" style="background-image:url('asset/img/79898357_p0.png');"></div>
+            </div>
+            <div class="show_img col-lg-4 col-md-4 hidden-sm hidden-xs">
+                <div class="show_img_content" style="background-image:url('asset/img/83592061_p0.jpg');"></div>
+            </div>
+        </div>
+
+        <div class="main_content_title">
+            <h2>
+                <span class="title_leave glyphicon glyphicon-leaf" style="top: 2px">
+                </span>Discovery
+            </h2>
+        </div>
+        <script>
+            $(function () {
+                $.get("/markdownlist","json",function (data) {
+                    for( var key in data ){
+                        var lists = "   <div class=\"main_list\">\n" +
+                            "        <div class=\"item\">\n" +
+                            "            <div style=\"background-image: url(\""+data[key].cover+"\")\" class=\"item_img\">\n" +
+                            "            </div>\n" +
+                            "            <div class=\"item_txt\">\n" +
+                            "                <div class=\"post-content\">\n" +
+                            "                    <div class=\"post-date\">\n" +
+                            "                        <i class=\"glyphicon glyphicon-time\" style=\"top: 2px\">\n" +
+                            "\n" +
+                            "                        </i>发布于 "+data[key].fristTime+"\n" +
+                            "                    </div>\n" +
+                            "                    <a href=\"markdown/reading.html?id="+data[key].id+"\" class=\"post-title\">\n" +
+                            "                        <h3>"+data[key].title+"</h3>\n" +
+                            "                    </a><div class=\"post-meta\">\n" +
+                            "                    <span><i style=\"top: 2px\"  class=\"glyphicon glyphicon-eye-open\"></i>11,724 热度</span>\n" +
+                            "                    <span class=\"comments-number\">\n" +
+                            "                                    <i style=\"top: 2px\" class=\"glyphicon glyphicon-comment\"></i>\n" +
+                            "                                <a href=\"#\">43 条评论</a>\n" +
+                            "                         </span>\n" +
+                            "                    <span>\n" +
+                            "                             <i  style=\"top: 2px\" class=\"glyphicon glyphicon-folder-open\">\n" +
+                            "\n" +
+                            "                             </i><a href=\"https://2heng.xin/archives/hacking/\">\n" +
+                            "                             野生技术协会</a>\n" +
+                            "                         </span>\n" +
+                            "                </div>\n" +
+                            "                    <div class=\"float-content\">\n" +
+                            "                        <p>"+data[key].content+"</p>\n" +
+                            "                        <div class=\"post-bottom\">\n" +
+                            "                            <a href=\"#\" class=\"button-normal\">\n" +
+                            "                                <i class=\"iconfont icon-caidan\"></i>\n" +
+                            "                            </a>\n" +
+                            "                        </div>\n" +
+                            "                    </div>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </div>\n" +
+                            "    </div>";
+                        // alert(lists);
+                        $('#lists_container').append(lists);
+                    }
+                })
+            })
+        </script>
+        <div class="main_list">
+            <div class="item">
+                <div class="item_img">
+                </div>
+                <div class="item_txt">
+                    <div class="post-content">
+                        <div class="post-date">
+                            <i class="glyphicon glyphicon-time" style="top: 2px">
+
+                            </i>发布于 2019-12-31
+                        </div>
+                        <a href="https://2heng.xin/2019/12/31/graphql-recursion/" class="post-title">
+                            <h3>GraphQL 实现递归查询</h3>
+                        </a><div class="post-meta">
+                        <span><i style="top: 2px"  class="glyphicon glyphicon-eye-open"></i>11,724 热度</span>
+                        <span class="comments-number">
+                                    <i style="top: 2px" class="glyphicon glyphicon-comment"></i>
+                                <a href="#">43 条评论</a>
+                         </span>
+                        <span>
+                             <i  style="top: 2px" class="glyphicon glyphicon-folder-open">
+
+                             </i><a href="https://2heng.xin/archives/hacking/">
+                             野生技术协会</a>
+                         </span>
+                    </div>
+                        <div class="float-content">
+                            <p>当我们需要用GraphQL查询多层套嵌的数据，比如像 WordPress 这样套嵌的评论信息时，通常的写法是： { posts(first: 100)</p>
+                            <div class="post-bottom">
+                                <a href="#" class="button-normal">
+                                    <i class="iconfont icon-caidan">
+                                    </i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_list">
+            <div class="item">
+                <div class="item_img">
+                </div>
+                <div class="item_txt">
+                    <div class="post-content">
+                        <div class="post-date">
+                            <i class="glyphicon glyphicon-time" style="top: 2px">
+
+                            </i>发布于 2019-12-31
+                        </div>
+                        <a href="https://2heng.xin/2019/12/31/graphql-recursion/" class="post-title">
+                            <h3>GraphQL 实现递归查询</h3>
+                        </a><div class="post-meta">
+                        <span><i style="top: 2px"  class="glyphicon glyphicon-eye-open"></i>11,724 热度</span>
+                        <span class="comments-number">
+                                    <i style="top: 2px" class="glyphicon glyphicon-comment"></i>
+                                <a href="#">43 条评论</a>
+                         </span>
+                        <span>
+                             <i  style="top: 2px" class="glyphicon glyphicon-folder-open">
+
+                             </i><a href="https://2heng.xin/archives/hacking/">
+                             野生技术协会</a>
+                         </span>
+                    </div>
+                        <div class="float-content">
+                            <p>当我们需要用 GraphQL 查询多层套嵌的数据，比如像 WordPress 这样套嵌的评论信息时，通常的写法是： { posts(first: 100)</p>
+                            <div class="post-bottom">
+                                <a href="#" class="button-normal">
+                                    <i class="iconfont icon-caidan"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="page_read">
+    <section>
+        <div class="container">
+            <div id="sidebar">
+                <h1 id="title">Table of Contents</h1>
+                <div class="markdown-body editormd-preview-container" id="custom-toc-container">#custom-toc-container</div>
+            </div>
+            <div id="markdown_view">
+
+            </div>
+        </div>
+        <script src="asset/editor.md-master/lib/marked.min.js"></script>
+        <script src="asset/editor.md-master/lib/prettify.min.js"></script>
+        <script src="asset/editor.md-master/lib/raphael.min.js"></script>
+        <script src="asset/editor.md-master/lib/underscore.min.js"></script>
+        <script src="asset/editor.md-master/lib/sequence-diagram.min.js"></script>
+        <script src="asset/editor.md-master/lib/flowchart.min.js"></script>
+        <script src="asset/editor.md-master/lib/jquery.flowchart.min.js"></script>
+        <script src="asset/editor.md-master/editormd.js"></script>
+        <script type="text/javascript">
+            $('.reading').click(function() {
+                var testEditormdView;
+                editormd.emoji     = {
+                    path  : "../asset/editor.md-master/plugins/emoji-dialog/emoji/",
+                    ext   : ".png"
+                };
+                // Twitter Emoji (Twemoji)  graphics files url path
+                editormd.twemoji = {
+                    path : "../asset/editor.md-master/plugins/emoji-dialog/72x72/",
+                    ext  : ".png"
+                };
+                var id  =$(this).attr("data_id");
+                $.get("/md/"+id,function (data) {
+                    $("#title").html(data.title);
+
+                    testEditormdView = editormd.markdownToHTML("markdown_view", {
+                        markdown        : data.content ,//+ "\r\n" + $("#append-test").text(),
+                        //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
+                        htmlDecode      : "style,script,iframe",  // you can filter tags decode
+                        //toc             : false,
+                        tocm            : true,    // Using [TOCM]
+                        tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
+                        //gfm             : false,
+                        //tocDropdown     : true,
+                        // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
+                        emoji           : true,
+                        taskList        : true,
+                        tex             : true,  // 默认不解析
+                        flowChart       : true,  // 默认不解析
+                        sequenceDiagram : true,  // 默认不解析
+                    });
+                })
+            });
+        </script>
+    </section>
+</div>
+<section id="page_footer"  class="page_footer">
+</section>
+</body>
+</html>

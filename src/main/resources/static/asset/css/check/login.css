@@ -1,0 +1,21 @@
+.login_box{
+    width: 300px;
+    height: 360px;
+    margin: 100px auto;
+    box-shadow: 2px 2px 2px 3px rgba(189, 189, 189, 0.2);
+
+}
+
+.login_box h2{
+    background-color: #773abb;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    height: 80px;
+    line-height: 80px;
+}
+
+.login_box_form{
+    padding: 20px;
+
+}

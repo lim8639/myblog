@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱系统</title>
+    <link rel="stylesheet" href="../asset/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="../asset/js/jquery.min.js">
+
+    </script>
+</head>
+<body>
+<section>
+    <link rel="stylesheet" href="../asset/APlayer-master/dist/APlayer.min.css">
+    <div id="aplayer"></div>
+    <script src="../asset/APlayer-master/dist/APlayer.min.js"></script>
+    <script>
+        var musicdata;
+        $(function () {
+            $.ajax({
+                type: "POST",
+                url: "../picUrl/3069158",
+                dataType: "text",
+                success: function (data) {
+                    musicdata = data;
+                    const ap = new APlayer({
+                        mutex: true,
+                        listFolded: true,
+                        listMaxHeight: 90,
+                        container: document.getElementById('aplayer'),
+                        fixed: true,
+                        audio: [{
+                            name: '光るなら',
+                            artist: 'Goose house',
+                            url: '../asset/music/Goose house - 光るなら.mp3',
+                            cover: musicdata
+                        }, {
+                            name: '光るなら',
+                            artist: 'Goose house',
+                            url: '../asset/music/Goose house - 光るなら.mp3',
+                            cover: musicdata,
+
+                        }]
+                    })
+                }
+            });
+        });
+    </script>
+</section>
+    <div class="container">
+       <div style="padding: 20px" class="div">
+           <form class="form-horizontal">
+               <div class="form-group">
+                   <label for="title">信封标题:</label>
+                   <input id="title" class="form-control" type="text" name="title" placeholder="Username">
+               </div>
+               <div class="form-group">
+                   <label for="email">收件人邮箱:</label>
+                   <input type="email"  class="form-control" id="email" placeholder="Password">
+               </div>
+               <div class="form-group">
+                   <label for="content">收件人邮箱:</label>
+                   <textarea  class="form-control" id="content" rows="16" style="width: 100%">
+             </textarea>
+               </div>
+               <button class="btn-default" id="btn">发送</button>
+           </form>
+
+       </div>
+    </div>
+     <script>
+         $("#btn").click(function () {
+             $.ajax({
+                 type:"POST",
+                 url:"../email2",
+                 data:{title:$("#title").val(),content:$("#content").val(),email:$("#email").val()},
+                 dataType:"json",
+                 success:function (data) {
+                     alert(data.message);
+                 }
+             });
+         });
+     </script>
+</body>
+</html>

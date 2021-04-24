@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../asset/css/frame.css">
+    <link rel="stylesheet" href="../asset/css/index.css">
+    <link rel="stylesheet" href="../asset/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="../asset/bootstrap-3.3.7-dist/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../asset/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../asset/editor.md-master/css/editormd.css">
+    <script src="../asset/bootstrap-3.3.7-dist/jquery/jquery.cookie.js"></script>
+    <script src="../asset/js/login.js"></script>
+    <style>
+        #md{
+            margin: 20px auto;
+            width: 90%;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #dedede;
+        }
+    </style>
+</head>
+<body>
+<section class="header_nav ">
+    <nav class="container">
+        <div class="nav_logo_text">
+            <a href="../index.html">沫沫的时光机</a>
+        </div>
+        <ul class="nav_ul hidden-sm hidden-xs">
+            <li class="visible-sm visible-xs"><a href="#">博客中心</a></li>
+            <li class=""><a href="../webapi/web.html">网站说明</a></li>
+            <li><a href="../webapi/api.html">api说明</a></li>
+            <li><a href="../personal/myweb.html">页面管理</a></li>
+            <li><a href="../markdown/manage.html">文章管理</a></li>
+        </ul>
+        <div class="nav_user_mine"><a  href="../personal/user.html">个人中心</a></div>
+    </nav>
+</section>
+<section>
+    <div id="md">
+        <form class="form-inline">
+            <div class="form-group">
+                <label class="sr-only" for="title">标题</label>
+                <input   type="text" class="form-control" id="title" placeholder="标题">
+            </div>
+            <button type="button" id="btn" class="btn btn-default">保存</button>
+                <span id="message">信息展示</span>
+
+        </form>
+    </div>
+    <div id="text_container">
+
+    </div>
+
+    <script src="../asset/editor.md-master/editormd.js"></script>
+    <script>
+
+
+
+        $("#title").blur(function () {
+
+        });
+
+
+        // 保存按钮
+        $("#btn").click(function () {
+            $.ajax({
+                url:"/saving",
+                type:"post",
+                headers:{
+                    Authorization:$.cookie("token")
+                },
+                data:{
+                    content:Editor.getMarkdown(),
+                    title: $("#title").val(),
+                    id:id
+                },
+                dataType:"text",
+                success:function (data) {
+                    id= data;
+                    $("#message").html("保存成功");
+                    $("#message").css('color','green')
+                },
+                // error:function () {
+                //     $("#message").html("保存失败");
+                // }
+            });
+        })
+        var Editor;
+        var id;
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+        $(function () {
+            var  markdown = "## ";
+            id = getUrlParam("id");
+            // 不存在页面id
+            if (id==null){
+                window.location.href= "../index.html";
+            }else if (id>0){
+                $.ajax({
+                    type:"get",
+                    url:"/md/"+id,
+                    dataType: "json",
+                    async:false,
+                    success:function (data) {
+                        markdown = data.content;
+                        $("#title").val(data.title);
+                    }
+                });
+            }
+
+            editormd.emoji     = {
+                path  : "../asset/editor.md-master/plugins/emoji-dialog/emoji/",
+                ext   : ".png"
+            };
+            // Twitter Emoji (Twemoji)  graphics files url path
+            editormd.twemoji = {
+                path : "../asset/editor.md-master/plugins/emoji-dialog/72x72/",
+                ext  : ".png"
+            };
+
+            Editor = editormd("text_container", {
+                width  : "90%",
+                height : 720,
+                toc : true,
+                theme:"3024-night",
+                syncScrolling:true,
+                emoji : true,       // Support Github emoji, Twitter Emoji(Twemoji), fontAwesome, Editor.md logo emojis.
+                // value:"# hello",
+                markdown : markdown,
+                codeFold : true,
+                //syncScrolling : false,
+                saveHTMLToTextarea : true,
+                taskList : true,
+                path   : '../asset/editor.md-master/lib/',
+                imageUpload : true,
+                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL : "../upload",
+                /*
+                 上传的后台只需要返回一个 JSON 数据，结构如下：
+                 {
+                    success : 0 | 1,           // 0 表示上传失败，1 表示上传成功
+                    message : "提示的信息，上传成功或上传失败及错误信息等。",
+                    url     : "图片地址"        // 上传成功时才返回
+                 }
+                 */
+            });
+            Editor.readOnly = true;
+            // Editor.onFocus(function () {
+            //     alert("编辑器得到焦点")
+            // })
+
+            // Editor.onblur(function () {
+            //     alert(失去焦点);
+            // })
+        })
+    </script>
+</section>
+<section class="page_footer">
+    <div class="footer">
+        <p><span style="top: 2px" class="glyphicon glyphicon-copyright-mark"></span>版权所有@copyright</p>
+        <p>技术支持: <a style="color: #9e69d7" href="http://bootcss.com">Bootstrap</a> | <a style="color: #7dc664" href="https://spring.io/">SpringBoot</a></p>
+        <p>2021.01.24</p>
+    </div>
+</section>
+</body>
+</html>

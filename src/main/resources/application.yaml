@@ -1,0 +1,48 @@
+logging:
+  level:
+    com: warn
+  file:
+    name: upload/log/springboot.log
+  pattern:
+  #日志格式
+   console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) - %clr([%t]){faint} %X{log_id} %clr(%logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+   file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p - [%t] %X{log_id} %logger{39} : %m%n%wEx"
+spring:
+  main:
+      lazy-initialization: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  #resources:
+    # static-locations: classpath:/META-INF/resources/,classpath:/resources/,\classpath:/static/,classpath:/public/,file:D://blog
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    schema: classpath:user.sql
+    initialization-mode: always
+    #数据库配置文件
+    filters: stat
+    maxActive: 20
+    initialSize: 5
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: Select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 20
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    logAbandoned: true
+    # 热部署
+  devtools:
+    restart:
+      enabled: false  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+    freemarker:
+      cache: false    #页面不加载缓存，修改即时生效

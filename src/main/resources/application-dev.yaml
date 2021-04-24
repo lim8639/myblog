@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost/myblog?serverTimezone=UTC
+server:
+  port: 8083
+  max-http-header-size: 102400
